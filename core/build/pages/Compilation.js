@@ -58,7 +58,7 @@ module.exports = `<html lang="en">
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #00db6e;
+  background: #333;
   left: 80px;
   top: 20px;
   -webkit-animation: lds-ball 1s linear infinite;
