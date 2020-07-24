@@ -1,0 +1,86 @@
+// Colors
+// ======
+// @LandonSchropp's approach of naming color variables.
+// - http://davidwalsh.name/sass-color-variables-dont-suck
+// - http://www.color-blindness.com/color-name-hue/
+
+// General colors palette
+$colors: (
+  // FORTNUM COLORS
+  header:#2E4172,
+  bianca:#F6F0E4,
+  spanish-white:#E8DFCE,
+  gulf-stream:#7BAFA4,
+  EauDeNil10:#F0F9F8,
+  EauDeNil:#64C5B7,
+  EauDeNil130:#007373,
+  grey4:#FAFAFA,
+  grey8:#EBEBEB,
+  grey80:#F5F5F5,
+  grey30:#D2D2D2,
+  grey50:#757575,
+  grey70:#4d4d4d,
+  DarkRed:#8E1812,
+  downy: #6bcaba,
+  grey90: #eee,
+  // --------------------------------
+  transparent: transparent,
+  black: #000,
+  white: #fff,
+  white-smoke: #f2f2f2,
+  gainsboro: #e0e0e0,
+  silver: #bdbdbd,
+  gray: #828282,
+  suva-gray: #8e8e8e,
+  matterhorn: #4f4f4f,
+  burnt-sienna: #eb5757,
+  buccaneer: #755,
+  forest-green: #308c14,
+  puerto-rico: #4dba87,
+  mine-shaft: #333,
+  error: #DB2D1C,
+  info: #FFAC00
+);
+
+// Theme generic colors
+// Key: name of color
+// Value: color value or map with default, hover, focus color values
+$colors-theme: (
+  primary: (
+    default: map-get($colors, matterhorn),
+    hover: map-get($colors, matterhorn)
+  ),
+  secondary: (
+    default: map-get($colors, gray),
+    hover: map-get($colors, matterhorn),
+  ),
+  accent: (
+    default: map-get($colors, matterhorn),
+    hover: map-get($colors, black),
+  ),
+  tertiary: map-get($colors, silver),
+  quaternary: map-get($colors, EauDeNil),
+  success: map-get($colors, puerto-rico),
+  warning: map-get($colors, buccaneer),
+  error: map-get($colors, burnt-sienna),
+  form-error: map-get($colors, error)
+);
+
+$colors-border: (
+  primary: map-get($colors, silver),
+  secondary: map-get($colors, gainsboro),
+);
+
+$colors-background: (
+  primary: (
+    default: map-get($colors, white),
+    hover: map-get($colors, silver)
+  ),
+  secondary: (
+    default: map-get($colors, white-smoke),
+    hover: map-get($colors, gainsboro)
+  ),
+  tertiary: map-get($colors, suva-gray),
+  grey8: map-get($colors, grey8),
+  grey30: map-get($colors, grey30)
+);

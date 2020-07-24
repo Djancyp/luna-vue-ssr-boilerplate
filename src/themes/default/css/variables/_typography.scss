@@ -1,0 +1,76 @@
+// Typography
+// ==========
+// Font sizes and families
+//
+// stylelint-disable indentation
+
+// Font Families
+// -------------
+
+// Typography
+// ==========
+// Font sizes and families
+//
+// stylelint-disable indentation
+
+// Font sizes and weights
+// -------------
+$font-size: (
+        fs-xxxxl: 36px,
+        fs-xxxl: 32px,
+        fs-xxxl_m_plus: 30px,
+        fs-xxxl_minus: 28px,
+        fs-xxxl-xl_plus:26px,
+        fs-xxxl-xl:25px,
+        fs-xxl_plus: 24px,
+        fs-xxl: 22px,
+        fs-xl: 20px,
+        fs-l: 18px,
+        fs-m_plus: 17px,
+        fs-m: 16px,
+        fs-s: 15px,
+        fs-xs: 14px,
+        fs-xxs: 13px,
+        fs-xxxs: 12px,
+        fs-xxxxs: 11px,
+        fs-xxxxxs: 10px,
+        fs-xxxxxxs_plus: 8px,
+        fs-xxxxxxs_p_minus: 7px,
+        fs-xxxxxxs: 6px,
+        fs-xxxxxxxs: 5px,
+        fs-xxxxxxxxs: 4px,
+);
+
+$font-weight: (
+        fw-light: 300,
+        fw-regular: 400,
+        fw-medium: 500,
+        fw-semi-bold: 600,
+        fw-bold: 700,
+        fw-black: 900,
+);
+
+// Font Families
+// -------------
+$font-fallbacks: (
+        verdana: 'Verdana, sans-serif'
+);
+
+$font-families: (
+        Nova-Book: ('Nova-Book', #{(map-get($font-fallbacks, 'verdana'))}),
+        Nova-Book-SemiBold: ('Nova-Book-SemiBold', #{(map-get($font-fallbacks, 'verdana'))}),
+        Nova-Book-Medium: ('Nova-Book-Meduim', #{(map-get($font-fallbacks, 'verdana'))}),
+        Century751-Semi-Bold: ('Century751-Semi-Bold', #{(map-get($font-fallbacks, 'verdana'))}),
+        Century751-Roman: ('Century751-Roman', #{(map-get($font-fallbacks, 'verdana'))}),
+        Century751-italic: ('Century751-italic', #{(map-get($font-fallbacks, 'verdana'))}),
+        font-icons: ('font-icons', #{(map-get($font-fallbacks, 'verdana'))}),
+) !default;
+
+$icons: (
+  down: '\e90e',
+  search: '\e909',
+  strongtea: '\e92b',
+  all-day: '\e92d',
+  assam-ceylon: '\e92c',
+  teacup: '\e92e'
+);

@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "strict": false,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": false,
+    "sourceMap": true,
+    "downlevelIteration": true,
+    "baseUrl": "./",
+    "types": [
+      "reflect-metadata",
+      "node",
+      "jest"
+    ],
+    "paths": {
+      "core/*": ["./core/*"],
+      "theme/*": ["./src/themes/default/*"],
+      "core/modules/*": ["./core/modules/*"],
+      "theme/modules/*":["./src/modules*"],
+      "@luna/*":["./*"]
+    },
+    "lib": ["es2017", "dom"]
+  },
+  "files": ["shims.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "core/**/*.ts",
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

@@ -1,0 +1,29 @@
+/// An easy way to get font-size from the $font-size map
+@function font-size($key) {
+    @if map-has-key($font-size, $key) {
+      @return map-get($font-size, $key);
+    }
+  
+    @warn "Unknown `#{$key}` in $font-size.";
+    @return null;
+};
+
+/// An easy way to get font-weight from the $font-weight map
+@function font-weight($key) {
+    @if map-has-key($font-weight, $key) {
+      @return map-get($font-weight, $key);
+    }
+  
+    @warn "Unknown `#{$key}` in $font-weight.";
+    @return null;
+};
+
+/// An easy way to get font-family from the $font-family map
+@function font-family($key) {
+    @if map-has-key($font-families, $key) {
+      @return map-get($font-families, $key);
+    }
+  
+    @warn "Unknown `#{$key}` in $font-families.";
+    @return null;
+};
