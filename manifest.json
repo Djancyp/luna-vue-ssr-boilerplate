@@ -1,37 +1,52 @@
 {
-  "name": "Vue Hackernews 2.0",
-  "short_name": "Vue HN",
-  "icons": [{
-      "src": "/public/logo-120.png",
-      "sizes": "120x120",
+  "name": "Luna Vue",
+  "short_name": "Luna",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "fullscreen",
+  "Scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "./public/icon-72x72.png",
+      "sizes": "72x72",
       "type": "image/png"
-    }, {
-      "src": "/public/logo-144.png",
+    },
+    {
+      "src": "./public/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "./public/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "./public/icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png"
-    }, {
-      "src": "/public/logo-152.png",
+    },
+    {
+      "src": "./public/icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png"
-    }, {
-      "src": "/public/logo-192.png",
+    },
+    {
+      "src": "./public/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
-    }, {
-      "src": "/public/logo-256.png",
-      "sizes": "256x256",
-      "type": "image/png"
-    }, {
-      "src": "/public/logo-384.png",
+    },
+    {
+      "src": "./public/icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png"
-    }, {
-    "src": "/public/logo-512.png",
-    "sizes": "512x512",
-    "type": "image/png"
-    }],
-  "start_url": "/",
-  "background_color": "#f2f3f5",
-  "display": "standalone",
-  "theme_color": "#f60"
+    },
+    {
+      "src": "./public/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages": null
 }
