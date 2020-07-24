@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <header
-      class="fixed w-100 brdr-bottom-1 bg-cl-primary brdr-cl-secondary"
+      class="fixed w-100  bg-cl-primary brdr-cl-secondary"
       :class="{ 'is-visible': navVisible }"
     >
       <div class="container px15">
@@ -16,9 +16,7 @@
               <logo width="auto" height="41px" />
             </div>
           </div>
-          <div class="col-md-4 col-xs-2 end-xs">
-            test
-          </div>
+          <div class="col-md-4 col-xs-2 end-xs" />
         </div>
       </div>
     </header>
@@ -82,7 +80,7 @@ $color-icon-hover: color(secondary, $colors-background);
 header {
   height: 54px;
   top: -55px;
-  z-index: 3;
+  z-index: 5;
   transition: top 0.2s ease-in-out;
   background-color: color(header);
   &.is-visible {
