@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Static</h1>
+  <div class="container">
+    <h1>This page is Static vue page</h1>
   </div>
 </template>
 <script>
