@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay absolute w-100" @click="close" v-if="overlayActive" />
+  <div class="overlay fixed w-100" @click="close" v-if="overlayActive" />
 </template>
 
 <script>

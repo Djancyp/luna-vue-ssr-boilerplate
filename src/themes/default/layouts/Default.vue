@@ -10,6 +10,7 @@
       @close="$store.commit('ui/setSidebar')"
     />
     <slot />
+    <notification />
   </div>
 </template>
 <script>
@@ -17,6 +18,8 @@ import { mapState } from 'vuex';
 import AsyncSidebar from '../components/theme/AsyncSidebar/AsyncSidebar.vue';
 import Overlay from '../components/Overlay.vue';
 import Header from '../components/core/Header/Header.vue'
+import Notification from '../components/Notification.vue'
+
 const SidebarMenu = () =>
   import(
     /* webpackPreload: true */ /* webpackChunkName: "sidebar-menu" */ '../components/core/SidebarMenu/Menu.vue'
@@ -35,7 +38,8 @@ export default {
   components: {
     AsyncSidebar,
     Overlay,
-    Header
+    Header,
+    Notification
   },
 
   mounted () {
