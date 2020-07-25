@@ -1,16 +1,19 @@
 <template>
   <div>
     <Overlay v-if="overlayActive" />
-    <Header />
+    <div id="viewport" class="w-100 relative">
+      <Header />
 
-    <async-sidebar
-      :async-component="SidebarMenu"
-      :is-open="isOpen"
-      direction="left"
-      @close="$store.commit('ui/setSidebar')"
-    />
-    <slot />
-    <notification />
+      <async-sidebar
+        :async-component="SidebarMenu"
+        :is-open="isOpen"
+        direction="left"
+        @close="$store.commit('ui/setSidebar')"
+      />
+      <slot />
+      <notification />
+    </div>
+    <vue-progress-bar />
   </div>
 </template>
 <script>

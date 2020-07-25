@@ -33,6 +33,7 @@
     "serve-favicon": "^2.4.5",
     "vue": "^2.5.22",
     "vue-no-ssr": "^1.1.1",
+    "vue-progressbar": "^0.7.5",
     "vue-router": "^3.0.1",
     "vue-server-renderer": "^2.5.22",
     "vuex": "^3.0.1",
