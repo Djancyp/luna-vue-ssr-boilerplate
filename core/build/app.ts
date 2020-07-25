@@ -3,10 +3,9 @@ import createStore from '../store'
 import { createRouter } from '../../src/themes/default/router'
 import { sync } from 'vuex-router-sync'
 import { registerTheme } from './themes'
-import { themeEntry } from '../../src/themes/default/index'
+import {themeEntry} from '../../src/themes/default/index'
 import { registerClientModules } from '../../src/modules/client'
 import { injectReferences } from '../lib/modules'
-
 const createApp = () => {
   const store = createStore
   const router = createRouter()
@@ -18,6 +17,7 @@ const createApp = () => {
     store,
     render: h => h(themeEntry)
   })
+
   injectReferences(app, store, router, '')
   registerClientModules()
   registerTheme('default', app, router, store)

@@ -1,5 +1,5 @@
+import Vue from 'vue'
 import App from './App.vue'
-// import { claimsStore } from './claims'
 
 const themeEntry = App
 function initTheme (app, router, store, config, ssrContext) {

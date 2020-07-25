@@ -10,9 +10,7 @@ Vue.use(Vuex)
 const state: any = {
   version: '',
   __DEMO_MODE__: false,
-  config: {},
-  user: null,
-  ui: null
+  config: {}
 }
 
 let createStore = new Vuex.Store<RootState>({

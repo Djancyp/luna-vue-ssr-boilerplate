@@ -1,10 +1,10 @@
 
 import { registerModule } from '../../core/lib/modules'
-import { RedboxMegamenu } from '../modules/example-module'
+import { ExampleSsrModule } from '../modules/example-module'
 import { uiStore } from '../modules/ui'
 import {NotificationModule} from '../modules/notification'
 export function registerClientModules () {
-  registerModule(RedboxMegamenu)
+  registerModule(ExampleSsrModule)
   registerModule(uiStore)
   registerModule(NotificationModule)
 }

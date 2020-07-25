@@ -19,7 +19,6 @@ import AsyncSidebar from '../components/theme/AsyncSidebar/AsyncSidebar.vue';
 import Overlay from '../components/Overlay.vue';
 import Header from '../components/core/Header/Header.vue'
 import Notification from '../components/Notification.vue'
-
 const SidebarMenu = () =>
   import(
     /* webpackPreload: true */ /* webpackChunkName: "sidebar-menu" */ '../components/core/SidebarMenu/Menu.vue'
