@@ -1,37 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>{{ title }}</title>
-    <meta charset="utf-8" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <link rel="apple-touch-icon" sizes="120x120" href="/public/logo-120.png" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, minimal-ui"
-    />
-    <link rel="shortcut icon" sizes="48x48" href="/assets/logo.png" />
-    <meta name="theme-color" content="#f60" />
-    <link rel="manifest" href="/manifest.json">
-    <style>
-      #skip a {
-        position: absolute;
-        left: -10000px;
-        top: auto;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-      }
-      #skip a:focus {
-        position: static;
-        width: auto;
-        height: auto;
-      }
-    </style>
-  </head>
+<html data-vue-meta-server-rendered {{{ meta.inject().htmlAttrs.text() }}}>
+  <head><!-- index for default theme -->
+  	{{{ meta.inject().title.text() }}}
+		{{{ meta.inject().meta.text() }}}
+		{{{ meta.inject().link.text() }}}
+		{{{ renderResourceHints() }}}
+		{{{ renderStyles() }}}
+		{{{ output.appendHead() }}}
+	</head>
   <body>
-    <div id="skip"><a href="#app">skip to content</a></div>
-    <!--vue-ssr-outlet-->
+		<!--vue-ssr-outlet-->
+    {{{ renderState() }}}
+    {{{ renderScripts() }}}
   </body>
 </html>

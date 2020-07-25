@@ -6,6 +6,7 @@
         <h1 class="blog-title">
           {{ blog.title }}
         </h1>
+        <img width="100px" src="../assets/logo.png" alt="">
         <p class="blog-body">
           {{ blog.body }}
         </p>
@@ -41,6 +42,12 @@ export default {
       action1: { label: 'OK', action: 'close' },
       action2: { label: 'Cancel', action: 'close' }
     })
+  },
+  metaInfo () {
+    return {
+      title: 'Home Page',
+      meta: [{ vmid: 'description', name: 'description', content: 'homepage' }]
+    }
   }
 };
 </script>

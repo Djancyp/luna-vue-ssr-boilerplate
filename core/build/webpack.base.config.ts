@@ -3,6 +3,7 @@ import webpack from 'webpack'
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin'
 import {VueLoaderPlugin} from 'vue-loader'
 import autoprefixer from 'autoprefixer';
+import HTMLPlugin from 'html-webpack-plugin';
 
 const postcssConfig = {
   loader: 'postcss-loader',
@@ -98,6 +99,12 @@ export default {
   plugins: isProd
     ? [
       new VueLoaderPlugin(),
+      new HTMLPlugin({
+        template: 'src/themes/default/index.template.html',
+        filename: 'index.html',
+        chunksSortMode: 'none',
+        inject: !isProd // in dev mode we're not using clientManifest therefore renderScripts() is returning empty string and we need to inject scripts using HTMLPlugin
+      }),
       new webpack.optimize.ModuleConcatenationPlugin()
     ]
     : [

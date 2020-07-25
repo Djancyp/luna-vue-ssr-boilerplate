@@ -6,18 +6,22 @@ import { registerTheme } from './themes'
 import {themeEntry} from '../../src/themes/default/index'
 import { registerClientModules } from '../../src/modules/client'
 import { injectReferences } from '../lib/modules'
+import VueMeta from 'vue-meta'
+
 const createApp = () => {
   const store = createStore
   const router = createRouter()
   sync(store, router)
   // TODO find a way to pass local.json to config store
-  store.state.config = {test: '1234'}
+  store.state.config = { test: '1234' }
+
+  Vue.use(VueMeta)
+
   const app = new Vue({
     router,
     store,
     render: h => h(themeEntry)
   })
-
   injectReferences(app, store, router, '')
   registerClientModules()
   registerTheme('default', app, router, store)

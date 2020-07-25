@@ -6,6 +6,12 @@
 <script>
 export default {
   name: 'Static',
+  metaInfo () {
+    return {
+      title: 'Static Page',
+      meta: [{ vmid: 'description', name: 'description', content: 'Static Page' }]
+    }
+  },
   mounted () {
     console.log(this.$store.state)
   }

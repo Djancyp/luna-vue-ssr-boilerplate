@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueProgressBar from 'vue-progressbar'
+
 const options = {
   thickness: '5px',
   transition: {
