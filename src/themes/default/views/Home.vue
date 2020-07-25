@@ -23,17 +23,17 @@ export default {
   mixins: [Composite],
   computed: {
     ...mapGetters({
-      visibleMenu: 'vesMenu/getBlogs'
+      visibleMenu: 'SsrFetchExample/getBlogs'
     })
   },
   // serverside fetch
   serverPrefetch () {
-    return this.$store.dispatch('vesMenu/getMenu', 'url');
+    return this.$store.dispatch('SsrFetchExample/getBlogs');
   },
   // if cant ssr client side
   async mounted () {
     if (!this.visibleMenu) {
-      const test = await this.$store.dispatch('vesMenu/getMenu', 'url');
+      const test = await this.$store.dispatch('SsrFetchExample/getBlogs');
     }
     this.$store.dispatch('notification/spawnNotification', {
       type: 'success',
