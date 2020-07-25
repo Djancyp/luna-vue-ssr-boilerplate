@@ -1,7 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueProgressBar from 'vue-progressbar'
-Vue.use(VueProgressBar)
+const options = {
+  thickness: '5px',
+  transition: {
+    speed: '0.2s',
+    opacity: '0.6s',
+    termination: 300
+  }
+}
+Vue.use(VueProgressBar, options)
 
 const themeEntry = App
 function initTheme (app, router, store, config, ssrContext) {
