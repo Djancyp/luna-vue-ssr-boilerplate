@@ -11,6 +11,7 @@ const compression = require('compression')
 const microcache = require('route-cache')
 const resolve = file => path.resolve(__dirname, file)
 const { createBundleRenderer } = require('vue-server-renderer')
+const minify = require('html-minifier').minify
 const isProd = process.env.NODE_ENV === 'production'
 const useMicroCache = process.env.MICRO_CACHE !== 'false'
 const serverInfo =
@@ -36,6 +37,7 @@ let readyPromise
 const templatePath = resolve('../../src/themes/default/index.template.html')
 if (isProd) {
   const template = fs.readFileSync(templatePath, 'utf-8')
+  console.log('')
   const bundle = require('../dist/vue-ssr-server-bundle.json')
   const clientManifest = require('../dist/vue-ssr-client-manifest.json')
   renderer = createRenderer(bundle, {
@@ -67,10 +69,8 @@ app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl))
 
 function render (req, res) {
   const s = Date.now()
-
   res.setHeader('Content-Type', 'text/html')
   res.setHeader('Server', serverInfo)
-
   const handleError = err => {
     if (err.url) {
       res.redirect(err.url)
@@ -84,14 +84,26 @@ function render (req, res) {
   }
 
   const context = {
-    title: 'Vue HN 2.0', // default title
-    url: req.url
+    title: 'Luna vues ssr 0.1', // default title
+    url: req.url,
+    output: {
+      prepend: (context) => { return ''; },
+      append: (context) => { return ''; },
+      appendHead: (context) => { return ''; },
+      template: 'default',
+      cacheTags: new Set()
+    },
+    meta: null
   }
   renderer.renderToString(context, (err, html) => {
     if (err) {
       return handleError(err)
     }
-    res.send(html)
+    const output = minify(html,
+      {
+        minifyJS: true,
+        minifyCSS: true})
+    res.end(output)
     if (!isProd) {
       console.log(`whole request: ${Date.now() - s}ms`)
     }

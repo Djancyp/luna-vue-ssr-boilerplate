@@ -44,7 +44,10 @@ export default context => {
         // inline the state in the HTML response. This allows the client-side
         // store to pick-up the server-side state without having to duplicate
         // the initial data fetching on the client.
+        const meta = (app as any).$meta()
+        context.meta = meta
         context.state = store.state
+
         resolve(app)
       }).catch(reject)
     }, reject)

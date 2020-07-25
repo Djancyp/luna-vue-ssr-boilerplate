@@ -1,16 +1,19 @@
 <template>
   <div>
     <Overlay v-if="overlayActive" />
-    <Header />
+    <div id="viewport" class="w-100 relative">
+      <Header />
 
-    <async-sidebar
-      :async-component="SidebarMenu"
-      :is-open="isOpen"
-      direction="left"
-      @close="$store.commit('ui/setSidebar')"
-    />
-    <slot />
-    <notification />
+      <async-sidebar
+        :async-component="SidebarMenu"
+        :is-open="isOpen"
+        direction="left"
+        @close="$store.commit('ui/setSidebar')"
+      />
+      <slot />
+      <notification />
+    </div>
+    <vue-progress-bar />
   </div>
 </template>
 <script>
@@ -19,6 +22,8 @@ import AsyncSidebar from '../components/theme/AsyncSidebar/AsyncSidebar.vue';
 import Overlay from '../components/Overlay.vue';
 import Header from '../components/core/Header/Header.vue'
 import Notification from '../components/Notification.vue'
+import Head from '../head'
+
 const SidebarMenu = () =>
   import(
     /* webpackPreload: true */ /* webpackChunkName: "sidebar-menu" */ '../components/core/SidebarMenu/Menu.vue'
@@ -40,7 +45,18 @@ export default {
     Header,
     Notification
   },
-
+  beforeMount () {
+    // Progress bar on top of the page
+    this.$router.beforeEach((to, from, next) => {
+      this.$Progress.start()
+      this.$Progress.increase(40)
+      next()
+    })
+    this.$router.afterEach((to, from) => {
+      this.$Progress.finish()
+    })
+  },
+  metaInfo: Head,
   mounted () {
     console.log(this.$store)
   }

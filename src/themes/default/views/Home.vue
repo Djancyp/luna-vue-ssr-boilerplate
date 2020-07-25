@@ -6,6 +6,7 @@
         <h1 class="blog-title">
           {{ blog.title }}
         </h1>
+        <img width="100px" src="../assets/logo.png" alt="">
         <p class="blog-body">
           {{ blog.body }}
         </p>
@@ -23,17 +24,17 @@ export default {
   mixins: [Composite],
   computed: {
     ...mapGetters({
-      visibleMenu: 'SsrFetchExample/getBlogs'
+      visibleMenu: 'ExampleSsrModule/getBlogs'
     })
   },
   // serverside fetch
   serverPrefetch () {
-    return this.$store.dispatch('SsrFetchExample/getBlogs');
+    return this.$store.dispatch('ExampleSsrModule/fetchBlogs');
   },
   // if cant ssr client side
   async mounted () {
     if (!this.visibleMenu) {
-      const test = await this.$store.dispatch('SsrFetchExample/getBlogs');
+      const test = await this.$store.dispatch('ExampleSsrModule/fetchBlogs');
     }
     this.$store.dispatch('notification/spawnNotification', {
       type: 'success',
@@ -41,6 +42,12 @@ export default {
       action1: { label: 'OK', action: 'close' },
       action2: { label: 'Cancel', action: 'close' }
     })
+  },
+  metaInfo () {
+    return {
+      title: 'Home Page',
+      meta: [{ vmid: 'description', name: 'description', content: 'homepage' }]
+    }
   }
 };
 </script>
