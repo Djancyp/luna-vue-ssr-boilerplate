@@ -6,15 +6,16 @@
   "author": "Djan R Onurer",
   "license": "ISC",
   "scripts": {
-    "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-build.json\" ts-node -r tsconfig-paths/register ./core/build/server.ts",
+    "generate-files": "cross-env TS_NODE_PROJECT=\"tsconfig-build.json\" ts-node ./core/build/generate-files.ts",
+    "dev": "npm run generate-files && cross-env TS_NODE_PROJECT=\"tsconfig-build.json\" ts-node -r tsconfig-paths/register ./core/build/server.ts",
     "dev:sw": "cross-env TS_NODE_PROJECT=\"tsconfig-build.json\" npm run build:sw && npm run dev",
     "build:sw": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config ./core/build/webpack.prod.sw.config.ts --mode production --progress",
-    "build": "rimraf dist && npm run build:client && npm run build:server",
-    "build:client": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config core/build/webpack.client.config.ts --progress --hide-modules",
-    "build:server": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config core/build/webpack.server.config.ts --progress --hide-modules"
+    "build": "rimraf dist && npm run generate-files && npm run build:client && npm run build:server",
+    "build:client": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\"  webpack --config  core/build/webpack.client.config.ts --progress --hide-modules",
+    "build:server": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\"  webpack --config  core/build/webpack.server.config.ts --progress --hide-modules"
   },
   "dependencies": {
-    "body-scroll-lock": "^3.0.3",
+    "body-scroll-lock": "^2.6.4",
     "compression": "^1.7.1",
     "config": "^3.3.1",
     "cross-env": "^5.1.1",

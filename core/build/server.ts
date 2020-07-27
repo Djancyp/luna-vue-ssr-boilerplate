@@ -1,5 +1,3 @@
-import { nextTick } from 'process';
-
 const fs = require('fs')
 const opn = require('opn');
 const config = require('config')
@@ -17,7 +15,11 @@ const useMicroCache = process.env.MICRO_CACHE !== 'false'
 const serverInfo =
   `express/${require('express/package.json').version} ` +
   `vue-server-renderer/${require('vue-server-renderer/package.json').version}`
+
 const HTMLContent = require('../build/pages/Compilation.js')
+
+const themeName = config.theme
+const themePath = '../../src/themes/' + themeName
 
 const app = express()
 
@@ -34,7 +36,7 @@ function createRenderer (bundle, options) {
 
 let renderer
 let readyPromise
-const templatePath = resolve('../../src/themes/default/index.template.html')
+const templatePath = resolve(themePath + '/index.template.html')
 if (isProd) {
   const template = fs.readFileSync(templatePath, 'utf-8')
   console.log('')
@@ -62,8 +64,8 @@ app.use(compression({ threshold: 0 }))
 app.use(favicon('./public/icon-72x72.png'))
 app.use('/dist', serve('../../dist', true))
 app.use('/public', serve('../../public', true))
-app.use('/assets', serve('../../src/themes/default/assets', true))
-app.use('/manifest.json', serve('../../manifest.json', true))
+app.use('/assets', serve(themePath + '/assets', true))
+app.use('/manifest.json', serve(themePath + '/manifest.json', true))
 app.use('/service-worker.js', serve('../../dist/service-worker.js', true))
 app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl))
 

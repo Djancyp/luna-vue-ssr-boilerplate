@@ -1,19 +1,20 @@
 import Vue from 'vue'
 import createStore from '../store'
-import { createRouter } from '../../src/themes/default/router'
+import { createRouter } from 'theme/router'
 import { sync } from 'vuex-router-sync'
 import { registerTheme } from './themes'
-import {themeEntry} from '../../src/themes/default/index'
+import {themeEntry} from 'theme/index'
 import { registerClientModules } from '../../src/modules/client'
 import { injectReferences } from '../lib/modules'
 import VueMeta from 'vue-meta'
+const LocalConfig = require('./config.json')
 
-const createApp = () => {
+const createApp = (config: string) => {
   const store = createStore
   const router = createRouter()
   sync(store, router)
   // TODO find a way to pass local.json to config store
-  store.state.config = { test: '1234' }
+  store.state.config = config
 
   Vue.use(VueMeta)
 
@@ -24,7 +25,7 @@ const createApp = () => {
   })
   injectReferences(app, store, router, '')
   registerClientModules()
-  registerTheme('default', app, router, store)
+  registerTheme(LocalConfig.theme, app, router, store)
 
   return { app, router, store }
 }

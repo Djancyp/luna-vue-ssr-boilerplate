@@ -92,6 +92,8 @@ export default {
   methods: {
     closeMenu () {
       this.$store.commit('ui/setSidebar', false);
+      document.getElementsByTagName('body')[0].removeAttribute('style')
+      clearAllBodyScrollLocks()
     }
   },
   mounted () {
@@ -99,6 +101,9 @@ export default {
       this.componentLoaded = true;
       disableBodyScroll(this.$refs.container)
     })
+  },
+  beforeDestroy () {
+    clearAllBodyScrollLocks()
   },
   destroyed () {
     clearAllBodyScrollLocks()

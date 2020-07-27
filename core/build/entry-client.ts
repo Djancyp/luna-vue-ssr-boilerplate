@@ -1,8 +1,14 @@
 import Vue from 'vue'
 import createApp from './app'
 import ProgressBar from '../../src/themes/default/components/ProgressBar.vue'
-import globalConfig from 'config'
 
+// import globalConfig from 'config'
+// const path = require('path')
+// const resolve = file => path.resolve(__dirname, file)
+
+// const themeName = globalConfig.theme
+// const themePath = '../../src/themes/' + themeName + '/index'
+// const themeEntry = require(resolve(themePath))
 declare var window: any
 
 // global progress bar
@@ -24,7 +30,7 @@ Vue.mixin({
   }
 })
 
-const { app, router, store } = createApp()
+const { app, router, store } = createApp('')
 
 // prime the store with server-initialized state.
 // the state is determined during SSR and inlined in the page markup.
