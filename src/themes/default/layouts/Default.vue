@@ -24,10 +24,7 @@ import Header from '../components/core/Header/Header.vue'
 import Notification from '../components/Notification.vue'
 import Head from '../head'
 
-const SidebarMenu = () =>
-  import(
-    /* webpackPreload: true */ /* webpackChunkName: "sidebar-menu" */ '../components/core/SidebarMenu/Menu.vue'
-  );
+const SidebarMenu = () => import(/* webpackChunkName: "sidebar-menu" */ '../components/core/SidebarMenu/Menu.vue');
 export default {
   data () {
     return {
