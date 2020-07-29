@@ -4,7 +4,11 @@ import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin'
 import {VueLoaderPlugin} from 'vue-loader'
 import autoprefixer from 'autoprefixer';
 import HTMLPlugin from 'html-webpack-plugin';
-
+import config from 'config'
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+delete process.env.TS_NODE_PROJECT;
+const themeName = config.theme
+const themePath = '../../src/themes/' + themeName
 const postcssConfig = {
   loader: 'postcss-loader',
   options: {
@@ -25,7 +29,7 @@ export default {
     ? false
     : '#cheap-module-source-map',
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../../dist'),
     publicPath: '/dist/',
     filename: '[name].[chunkhash].js'
   },
@@ -33,10 +37,17 @@ export default {
     alias: {
       'public': path.resolve(__dirname, '../../public'),
       'src': path.resolve(__dirname, '../../src'),
-      'theme': path.resolve(__dirname, '../../src/themes/default'),
-      'theme/css': path.resolve(__dirname, '../../src/themes/default/css')
+      'theme': path.resolve(__dirname, themePath),
+      'theme/css': path.resolve(__dirname, themePath + '/css')
     },
-    extensions: [ '.tsx', '.ts', '.js' ]
+    extensions: ['.tsx', '.ts', '.js'],
+    plugins: [
+      new TsconfigPathsPlugin({
+        configFile: path.resolve(__dirname, '../../tsconfig.json'),
+        extensions: ['.ts', '.tsx'],
+        mainFields: ['browser', 'main']
+      })
+    ]
   },
   module: {
     noParse: /es6-promise\.js$/, // avoid webpack shimming process
@@ -52,7 +63,12 @@ export default {
       },
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: [{
+          loader: 'ts-loader',
+          options: {
+            configFile: '../../tsconfig.json'
+          }
+        }],
         exclude: /node_modules/
       },
       {
@@ -100,10 +116,14 @@ export default {
     ? [
       new VueLoaderPlugin(),
       new HTMLPlugin({
-        template: 'src/themes/default/index.template.html',
+        template: './src/themes/default/index.template.html',
         filename: 'index.html',
         chunksSortMode: 'none',
         inject: !isProd // in dev mode we're not using clientManifest therefore renderScripts() is returning empty string and we need to inject scripts using HTMLPlugin
+      }),
+      new webpack.DefinePlugin({
+        'process.env.__APPVERSION__': JSON.stringify(require('../../package.json').version)
+        // 'process.env.__BUILDTIME__': JSON.stringify(dayjs().format('YYYY-MM-DD HH:mm:ss'))
       }),
       new webpack.optimize.ModuleConcatenationPlugin()
     ]

@@ -1,0 +1,1 @@
+{"theme":"default","server":{"host":"localhost","port":3000},"endpoints":{"blogs":"https://jsonplaceholder.typicode.com/posts"}}

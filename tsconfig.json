@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "module": "esnext",
     "strict": false,
+    "allowJs": false,
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -11,7 +13,6 @@
     "resolveJsonModule": false,
     "sourceMap": true,
     "downlevelIteration": true,
-    "baseUrl": "./",
     "types": [
       "reflect-metadata",
       "node",

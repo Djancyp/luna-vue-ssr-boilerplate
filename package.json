@@ -6,15 +6,17 @@
   "author": "Djan R Onurer",
   "license": "ISC",
   "scripts": {
-    "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-build.json\" ts-node -r tsconfig-paths/register ./core/build/server.ts",
+    "start": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" pm2 start ecosystem.json $PM2_ARGS",
+    "generate-files": "cross-env TS_NODE_PROJECT=\"tsconfig-build.json\" ts-node ./core/build/generate-files.ts",
+    "dev": "npm run generate-files && cross-env TS_NODE_PROJECT=\"tsconfig-build.json\" ts-node -r tsconfig-paths/register ./core/build/server.ts",
     "dev:sw": "cross-env TS_NODE_PROJECT=\"tsconfig-build.json\" npm run build:sw && npm run dev",
     "build:sw": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config ./core/build/webpack.prod.sw.config.ts --mode production --progress",
-    "build": "rimraf dist && npm run build:client && npm run build:server",
-    "build:client": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config core/build/webpack.client.config.ts --progress --hide-modules",
-    "build:server": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\" webpack --config core/build/webpack.server.config.ts --progress --hide-modules"
+    "build": "rimraf dist && npm run generate-files && npm run build:client && npm run build:server",
+    "build:client": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\"  webpack --config  core/build/webpack.client.config.ts --progress --hide-modules",
+    "build:server": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-build.json\"  webpack --config  core/build/webpack.server.config.ts --progress --hide-modules"
   },
   "dependencies": {
-    "body-scroll-lock": "^3.0.3",
+    "body-scroll-lock": "^2.6.4",
     "compression": "^1.7.1",
     "config": "^3.3.1",
     "cross-env": "^5.1.1",
@@ -29,6 +31,7 @@
     "lodash.template": "^4.5.0",
     "lru-cache": "^4.1.1",
     "mini-css-extract-plugin": "^0.9.0",
+    "pm2": "^4.4.0",
     "reflect-metadata": "^0.1.13",
     "register-service-worker": "^1.7.1",
     "route-cache": "0.4.3",
@@ -52,6 +55,7 @@
     "@types/webpack": "^4.41.21",
     "@typescript-eslint/eslint-plugin": "^1.7.1-alpha.17",
     "@typescript-eslint/parser": "^1.7.1-alpha.17",
+    "app-root-path": "^3.0.0",
     "autoprefixer": "^7.1.6",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.1.0",

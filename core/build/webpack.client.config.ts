@@ -6,7 +6,7 @@ import VueSSRClientPlugin from 'vue-server-renderer/client-plugin'
 
 const config = merge(base, {
   entry: {
-    app: ['@babel/polyfill', './core/build/entry-client.ts']
+    app: ['@babel/polyfill/noConflict', './core/build/entry-client.ts']
   },
   resolve: {
     alias: {
@@ -56,14 +56,11 @@ if (process.env.NODE_ENV === 'production') {
           handler: 'networkFirst'
         },
         {
-          urlPattern: '/public/*',
+          urlPattern: '/assets/*',
           handler: 'fastest'
         },
         {
-          urlPattern: '/assets/*',
-          handler: 'fastest'
-        }, {
-          urlPattern: '/assets/ig/(.*)',
+          urlPattern: '/assets/icons/*',
           handler: 'fastest'
         }, {
           urlPattern: '/dist/(.*)',

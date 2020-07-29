@@ -30,6 +30,7 @@ module.exports = function setupDevServer (app, templatePath, cb) {
   }
 
   // read template from disk and watch
+  console.log(templatePath)
   template = fs.readFileSync(templatePath, 'utf-8')
   chokidar.watch(templatePath).on('change', () => {
     template = fs.readFileSync(templatePath, 'utf-8')

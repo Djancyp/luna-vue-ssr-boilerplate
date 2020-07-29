@@ -44,15 +44,15 @@ export default {
     this.getComponent();
   },
   watch: {
-    isOpen (state) {
-      if (state) {
-        this.$nextTick(() => {
-          disableBodyScroll(this.$refs.sidebar);
-        });
-      } else {
-        clearAllBodyScrollLocks();
-      }
-    }
+    // isOpen (state) {
+    //   if (state) {
+    //     this.$nextTick(() => {
+    //       disableBodyScroll(this.$refs.sidebar);
+    //     });
+    //   } else {
+    //     clearAllBodyScrollLocks()
+    //   }
+    // }
   },
   methods: {
     getComponent () {
