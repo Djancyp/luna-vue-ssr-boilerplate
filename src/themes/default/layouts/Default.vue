@@ -56,9 +56,6 @@ export default {
       this.$Progress.finish()
     })
   },
-  metaInfo: Head,
-  mounted () {
-    console.log(this.$store)
-  }
+  metaInfo: Head
 }
 </script>

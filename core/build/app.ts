@@ -25,7 +25,7 @@ const createApp = (config: string) => {
   })
   injectReferences(app, store, router, '')
   registerClientModules()
-  registerTheme(LocalConfig.theme, app, router, store)
+  // registerTheme(LocalConfig.theme, app, router, store)
 
   return { app, router, store }
 }

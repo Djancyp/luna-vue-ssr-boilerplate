@@ -7,7 +7,7 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-const DefaultLayout = () => import(/* webpackChunkName: "vsf-layout-default" */ './layouts/Default.vue')
+const DefaultLayout = () => import(/* webpackChunkName: "layout-default" */ './layouts/Default.vue')
 
 export default {
   components: {

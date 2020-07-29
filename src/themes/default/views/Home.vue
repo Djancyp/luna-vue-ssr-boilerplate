@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import Composite from './composite';
+// import Composite from './composite';
 import { mapGetters, mapState } from 'vuex';
 
 export default {
   name: 'Home',
-  mixins: [Composite],
+  // mixins: [Composite],
   computed: {
     ...mapGetters({
       visibleMenu: 'ExampleSsrModule/getBlogs'

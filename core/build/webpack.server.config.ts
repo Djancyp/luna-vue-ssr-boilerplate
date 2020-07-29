@@ -7,7 +7,7 @@ import VueSSRServerPlugin from 'vue-server-renderer/server-plugin'
 export default merge(base, {
   target: 'node',
   devtool: '#source-map',
-  entry: ['@babel/polyfill', './core/build/entry-server.ts'],
+  entry: ['@babel/polyfill/noConflict', './core/build/entry-server.ts'],
   output: {
     filename: 'server-bundle.js',
     libraryTarget: 'commonjs2'
