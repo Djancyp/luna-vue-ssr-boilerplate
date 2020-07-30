@@ -80,9 +80,8 @@ export default {
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'url-loader',
+        loader: 'file-loader',
         options: {
-          limit: 10000,
           name: '[name].[ext]?[hash]'
         }
       },

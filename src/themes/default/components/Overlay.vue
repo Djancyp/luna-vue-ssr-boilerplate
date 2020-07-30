@@ -6,6 +6,7 @@
 import { mapState } from 'vuex';
 
 export default {
+  name: 'Overlay',
   methods: {
     close () {
       this.$store.commit('ui/setOverlay', false);
