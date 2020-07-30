@@ -7,7 +7,6 @@ export default {
   meta: [
     { charset: 'utf-8' },
     { vmid: 'description', name: 'description', content: '' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1, minimal-ui user-scalable="no"' },
     { name: 'robots', content: 'index, follow' },
     { name: 'mobile-web-app-capable', content: 'yes' },
     { name: 'theme-color', content: '#ffffff' },

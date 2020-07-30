@@ -8,7 +8,7 @@
         :async-component="SidebarMenu"
         :is-open="isOpen"
         direction="left"
-        @close="$store.commit('ui/setSidebar')"
+        @close="$store.commit('ui/setSidebar',false)"
       />
       <slot />
       <notification />

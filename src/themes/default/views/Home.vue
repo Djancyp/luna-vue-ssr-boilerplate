@@ -4,9 +4,8 @@
     <ul v-if="visibleMenu">
       <li v-for="(blog,index) in visibleMenu" :key="index" class="blog-box">
         <h1 class="blog-title">
-          {{ blog.title }}
+          {{ blog.name }}
         </h1>
-        <img width="100px" src="../assets/logo.png" alt="">
         <p class="blog-body">
           {{ blog.body }}
         </p>
@@ -33,7 +32,8 @@ export default {
   },
   // if cant ssr client side
   async mounted () {
-    if (!this.visibleMenu) {
+    console.log('this is render twice')
+    if (this.visibleMenu.length <= 0) {
       const test = await this.$store.dispatch('ExampleSsrModule/fetchBlogs');
     }
     this.$store.dispatch('notification/spawnNotification', {

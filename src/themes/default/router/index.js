@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import {once} from 'core/helpers'
 
-Vue.use(Router)
-
+once('__VUE_EXTEND_RR__', () => {
+  Vue.use(Router)
+})
 // route-level code splitting
 // const createListView = id => () => import('../views/CreateListView').then(m => m.default(id))
 const Home = () => import(/* webpackChunkName: "luna-Home" */'../views/Home.vue');

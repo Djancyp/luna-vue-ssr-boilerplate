@@ -50,63 +50,26 @@ import { mapState } from 'vuex'
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 
 export default {
-  components: {
-  },
   data () {
     return {
-      myAccountLinks: [
-        {
-          id: 1,
-          name: 'My profile',
-          url: '/my-account'
-        },
-        {
-          id: 2,
-          name: 'My shipping details',
-          url: '/my-account/shipping-details'
-        },
-        {
-          id: 3,
-          name: 'My newsletter',
-          url: '/my-account/newsletter'
-        },
-        {
-          id: 4,
-          name: 'My orders',
-          url: '/my-account/orders'
-        },
-        {
-          id: 5,
-          name: 'My loyalty card',
-          url: '#'
-        },
-        {
-          id: 6,
-          name: 'My product reviews',
-          url: '#'
-        }
-      ],
       componentLoaded: false
     }
   },
   methods: {
     closeMenu () {
       this.$store.commit('ui/setSidebar', false);
-      document.getElementsByTagName('body')[0].removeAttribute('style')
-      clearAllBodyScrollLocks()
     }
   },
   mounted () {
     this.$nextTick(() => {
       this.componentLoaded = true;
       disableBodyScroll(this.$refs.container)
+      console.log('hello menu')
     })
-  },
-  beforeDestroy () {
-    clearAllBodyScrollLocks()
   },
   destroyed () {
     clearAllBodyScrollLocks()
+    console.log('byebye menu')
   }
 }
 </script>

@@ -6,15 +6,15 @@ const mutations: MutationTree<uiTypes> = {
     state.authElem = payload;
   },
   setMyAccount (state, payload) {
-    state.openMyAccount = payload === true;
+    state.openMyAccount = payload === true
     state.overlay = payload;
   },
   setSidebar (state, payload) {
-    state.sidebar = payload === true;
-    state.overlay = payload;
+    state.sidebar = payload === true
+    state.overlay = payload === true
   },
   setOverlay (state, action) {
-    state.overlay = action === true;
+    state.overlay = action === true
   }
 };
 

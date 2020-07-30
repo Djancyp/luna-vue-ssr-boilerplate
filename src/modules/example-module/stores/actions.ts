@@ -5,7 +5,7 @@ import RootState from 'core/types/RootState'
 import fetch from 'isomorphic-fetch'
 const actions: ActionTree<BlogsRootState, RootState> = {
   async fetchBlogs ({commit}) {
-    const blogs = fetch('https://jsonplaceholder.typicode.com/posts')
+    const blogs = fetch('https://jsonplaceholder.typicode.com/posts/1/comments')
       .then((response) => response.json())
       .then((json) => {
         commit('setBlogs', json)
