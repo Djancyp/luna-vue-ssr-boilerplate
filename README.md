@@ -14,16 +14,21 @@
 npm install
 ```
 
-## Usage
+## Development
 
 ```sh
 npm run dev
 ```
+## Production
 
+```sh
+npm run build
+npm run start
+```
 ## Author
 
 👤 **Djan R Onurer**
 
 
-## Doc will be update shortly
+## Doc will be update shortly. App still in progress 
 
