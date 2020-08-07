@@ -2,10 +2,10 @@ import path from 'path'
 import webpack from 'webpack'
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin'
 import {VueLoaderPlugin} from 'vue-loader'
-import autoprefixer from 'autoprefixer';
 import HTMLPlugin from 'html-webpack-plugin';
 import config from 'config'
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+
 delete process.env.TS_NODE_PROJECT;
 const themeName = config.theme
 const themePath = '../../src/themes/' + themeName

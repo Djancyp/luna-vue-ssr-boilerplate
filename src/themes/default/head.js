@@ -17,16 +17,11 @@ export default {
     { rel: 'icon', type: 'image/png', href: '/assets/icons/icon-144x144.png', sizes: '144x144' },
     { rel: 'apple-touch-icon', href: '/assets/icon-72x72.png' },
     { rel: 'apple-touch-startup-image', href: '/assets/icons/icon-72x72.png', sizes: '72x72' },
-    { rel: 'manifest', href: '/assets/manifest.json' },
-    { rel: 'preconnect', href: 'https://fonts.gstatic.com/', crossorigin: 'anonymous' }
+    { rel: 'manifest', href: '/assets/manifest.json' }
   ],
   script: [
     {
-      src: 'https://cdn.jsdelivr.net/npm/pwacompat@2.0.10/pwacompat.min.js',
-      async: true,
-      integrity:
-        'sha384-I1iiXcTSM6j2xczpDckV+qhhbqiip6FyD6R5CpuqNaWXvyDUvXN5ZhIiyLQ7uuTh',
-      crossorigin: 'anonymous'
+      src: 'https://apis.google.com/js/api:client.js'
     }
   ]
 }

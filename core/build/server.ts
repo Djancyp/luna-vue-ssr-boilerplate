@@ -20,7 +20,6 @@ const serverInfo =
   `vue-server-renderer/${require('vue-server-renderer/package.json').version}`
 
 const HTMLContent = require('../build/pages/Compilation.js')
-
 const themeName = config.theme
 const themePath = 'src/themes/' + themeName
 const app = express()
@@ -65,6 +64,9 @@ app.use(compression({ threshold: 0 }))
 app.use(favicon(themePath + '/assets/icons/icon-72x72.png'))
 app.use('/dist', serve('dist', true))
 app.use('/assets', serve(themePath + '/assets', true))
+app.use('/assets/manifest.json', serve(themePath + '/assets/manifest.json', true), (res, req, next) => {
+  console.log('asset running')
+})
 app.use('/service-worker.js', serve('dist/service-worker.js', false, {
   setHeaders: function (res, path, stat) {
     res.set('Content-Type', 'text/javascript; charset=UTF-8')
@@ -107,7 +109,8 @@ function render (req, res) {
     const output = minify(html,
       {
         minifyJS: true,
-        minifyCSS: true})
+        minifyCSS: true
+      })
     res.end(output)
     if (!isProd) {
       console.log(`whole request: ${Date.now() - s}ms`)

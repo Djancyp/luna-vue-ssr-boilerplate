@@ -1,13 +1,11 @@
-// Colors
-// ======
-// @LandonSchropp's approach of naming color variables.
-// - http://davidwalsh.name/sass-color-variables-dont-suck
-// - http://www.color-blindness.com/color-name-hue/
-
 // General colors palette
 $colors: (
-  // FORTNUM COLORS
-  header:#f2484b,
+  header:#59A397,
+  Frostee:#D3E1CE,
+  Amazon:#347557,
+  Cyprus:#0D3032,
+  blue-chill:#449492,
+
   bianca:#F6F0E4,
   spanish-white:#E8DFCE,
   gulf-stream:#7BAFA4,
@@ -42,9 +40,6 @@ $colors: (
   info: #FFAC00
 );
 
-// Theme generic colors
-// Key: name of color
-// Value: color value or map with default, hover, focus color values
 $colors-theme: (
   primary: (
     default: map-get($colors, matterhorn),

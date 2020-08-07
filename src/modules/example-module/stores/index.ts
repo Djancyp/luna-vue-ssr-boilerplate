@@ -7,7 +7,8 @@ import getters from './getters';
 export const Blogs: Module<blogsTypes, RootState> = {
   namespaced: true,
   state: {
-    blogs: []
+    blogs: [],
+    news: []
   },
   mutations,
   actions,
