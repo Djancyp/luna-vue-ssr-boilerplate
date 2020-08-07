@@ -4,20 +4,20 @@ import createApp from './app'
 declare var window: any
 
 // a global mixin that calls `asyncData` when a route component's params change
-// Vue.mixin({
-//   beforeRouteUpdate (to, from, next) {
-//     const { asyncData } = this.$options
-//     console.log(this.$options)
-//     if (asyncData) {
-//       asyncData({
-//         store: this.$store,
-//         route: to
-//       }).then(next).catch(next)
-//     } else {
-//       next()
-//     }
-//   }
-// })
+Vue.mixin({
+  beforeRouteUpdate (to, from, next) {
+    const { asyncData } = this.$options
+    console.log(this.$options)
+    if (asyncData) {
+      asyncData({
+        store: this.$store,
+        route: to
+      }).then(next).catch(next)
+    } else {
+      next()
+    }
+  }
+})
 
 const { app, router, store } = createApp('')
 if (window.__INITIAL_STATE__) {
