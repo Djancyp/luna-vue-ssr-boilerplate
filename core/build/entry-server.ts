@@ -39,11 +39,11 @@ export default context => {
       if (!matchedComponents.length) {
         return reject({ code: 404 })
       }
-      Promise.all(matchedComponents.map((Component: any) => {
-        const components = Component.mixins ? Array.from(Component.mixins) : []
-        console.log(components)
-        _ssrHydrateSubcomponents(components, store, router, resolve, reject, app, context)
-      }))
+      // Promise.all(matchedComponents.map((Component: any) => {
+      //   const components = Component.mixins ? Array.from(Component.mixins) : []
+      //   console.log(components)
+      //   _ssrHydrateSubcomponents(components, store, router, resolve, reject, app, context)
+      // }))
 
       Promise.all(matchedComponents.map(({ asyncData }) => asyncData && asyncData({
         store,
