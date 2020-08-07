@@ -1,6 +1,12 @@
 <template>
   <div class="sidebar-menu fixed mw-100 bg-cl-secondary">
     <div class="row brdr-bottom-1 brdr-cl-bg-secondary">
+      <div
+        v-if="submenu.depth"
+        class="col-xs bg-cl-primary"
+      >
+        <sub-btn type="back" class="bg-cl-transparent brdr-none" />
+      </div>
       <div class="col-xs bg-cl-primary">
         <button
           type="button"
@@ -14,30 +20,32 @@
     </div>
     <div class="sidebar-menu__container row" ref="container">
       <div class="col-xs-12 h4 serif">
-        <ul class="p0 m0 relative sidebar-menu__list">
+        <ul class="p0 m0 relative sidebar-menu__list" :style="mainListStyles">
           <li
             @click="closeMenu"
             class="brdr-bottom-1 brdr-cl-bg-secondary bg-cl-primary"
+            v-for="menu in Menus" :key="menu.id"
           >
+            <sub-btn
+              v-if="menu.children_count > 0"
+              class="bg-cl-transparent brdr-none fs-medium"
+              :id="menu.id"
+              :name="menu.name"
+            />
             <router-link
+              v-else
               class="block px25 py20 cl-accent no-underline"
-              :to="'/'"
+              :to="menu.url"
               exact
             >
-              {{ 'Home' }}
+              {{ menu.name }}
             </router-link>
-          </li>
-          <li
-            @click="closeMenu"
-            class="bg-cl-secondary"
-          >
-            <router-link
-              class="block px25 py20 brdr-bottom-1 brdr-cl-secondary cl-accent no-underline"
-              :to="'/static'"
-              exact
-            >
-              {{ 'Static Page' }}
-            </router-link>
+            <sub-category
+              :category-links="menu.children_data"
+              :id="menu.id"
+              :parent-slug="menu.url"
+              :parent-path="menu.url"
+            />
           </li>
         </ul>
       </div>
@@ -48,11 +56,57 @@
 <script>
 import { mapState } from 'vuex'
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
-
+import SubBtn from './SubBtn.vue'
+import SubCategory from './SubCategory.vue'
 export default {
   data () {
     return {
+      Menus: [
+        {
+          id: 1,
+          name: 'Home Page',
+          url: '/',
+          children_count: 0
+        },
+        {
+          id: 2,
+          name: 'About Us',
+          url: '/static',
+          children_count: 0
+        },
+        {
+          id: 3,
+          name: 'Example Pages',
+          url: '/test',
+          children_count: 3,
+          children_data: [
+            {
+              id: 1,
+              name: 'Blog Ssr Fetch',
+              url: '/blogs_example'
+            }, {
+              id: 2,
+              name: 'Submenu Example 2',
+              url: '/static'
+            }
+          ]
+        }
+      ],
       componentLoaded: false
+    }
+  },
+  computed: {
+    mainListStyles () {
+      return this.submenu.depth ? `transform: translateX(${this.submenu.depth * 100}%)` : false
+    },
+    ...mapState({
+      submenu: state => state.ui.submenu
+    }),
+    getSubmenu () {
+      return this.submenu
+    },
+    isCurrentMenuShowed () {
+      return !this.getSubmenu || !this.getSubmenu.depth
     }
   },
   methods: {
@@ -64,12 +118,14 @@ export default {
     this.$nextTick(() => {
       this.componentLoaded = true;
       disableBodyScroll(this.$refs.container)
-      console.log('hello menu')
     })
   },
   destroyed () {
     clearAllBodyScrollLocks()
-    console.log('byebye menu')
+  },
+  components: {
+    SubBtn,
+    SubCategory
   }
 }
 </script>
@@ -87,7 +143,6 @@ $color-mine-shaft: color(mine-shaft);
   height: 100vh;
   width: 350px;
   overflow: hidden;
-
   @media (max-width: 767px) {
     width: 100vh;
   }

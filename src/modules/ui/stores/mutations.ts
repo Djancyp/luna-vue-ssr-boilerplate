@@ -15,6 +15,19 @@ const mutations: MutationTree<uiTypes> = {
   },
   setOverlay (state, action) {
     state.overlay = action === true
+  },
+  setMenu (state) {
+    console.log('test')
+  },
+  setSubmenu (state, { id, depth }) {
+    if (id) {
+      state.submenu.path.push(id)
+    } else if (state.submenu.path.length) {
+      setTimeout(() => {
+        state.submenu.path.pop()
+      }, 300)
+    }
+    state.submenu.depth = state.submenu.depth > 0 && depth
   }
 };
 

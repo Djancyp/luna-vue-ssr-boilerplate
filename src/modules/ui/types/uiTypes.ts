@@ -1,12 +1,12 @@
 
 export default interface store {
-  sidebar: boolean;
-  overlay: boolean;
-  loader: boolean;
-  authElem: "login";
-  openMyAccount: boolean;
+  sidebar: boolean,
+  overlay: boolean,
+  loader: boolean,
+  authElem: 'login',
+  openMyAccount: boolean,
   submenu: {
-    depth: boolean;
-    path: [];
-  };
+    depth: any,
+    path: any
+  }
 }

@@ -1,4 +1,5 @@
 
 export default interface Blogs {
-  blogs: any[]
+  blogs: any[],
+  news: any[]
 }

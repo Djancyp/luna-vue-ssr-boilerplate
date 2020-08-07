@@ -1,18 +1,17 @@
 <template>
-  <div>
+  <div id="viewport" class="w-100 relative">
     <Overlay v-if="overlayActive" />
-    <div id="viewport" class="w-100 relative">
-      <Header />
+    <Header />
 
-      <async-sidebar
-        :async-component="SidebarMenu"
-        :is-open="isOpen"
-        direction="left"
-        @close="$store.commit('ui/setSidebar',false)"
-      />
-      <slot />
-      <notification />
-    </div>
+    <async-sidebar
+      :async-component="SidebarMenu"
+      :is-open="isOpen"
+      direction="left"
+      @close="$store.commit('ui/setSidebar',false)"
+    />
+    <slot class="main-container" />
+    <Footer />
+    <notification />
     <vue-progress-bar />
   </div>
 </template>
@@ -23,8 +22,9 @@ import Overlay from '../components/Overlay.vue';
 import Header from '../components/core/Header/Header.vue'
 import Notification from '../components/Notification.vue'
 import Head from '../head'
+import Footer from '../components/core/Footer/Footer.vue'
 
-const SidebarMenu = () => import(/* webpackChunkName: "sidebar-menu" */ '../components/core/SidebarMenu/Menu.vue');
+const SidebarMenu = () => import(/* webpackPreload: true */ /* webpackChunkName: "sidebar-menu" */ '../components/core/SidebarMenu/Menu.vue');
 export default {
   data () {
     return {
@@ -40,6 +40,7 @@ export default {
     AsyncSidebar,
     Overlay,
     Header,
+    Footer,
     Notification
   },
   beforeMount () {

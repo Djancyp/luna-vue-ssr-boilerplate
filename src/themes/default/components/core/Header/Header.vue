@@ -105,6 +105,9 @@ header {
 .links {
   text-decoration: underline;
 }
+.col-md-4:first-of-type {
+    padding-left: 0;
+}
 @media (max-width: 767px) {
   .row.middle-xs {
     margin: 0 -15px;

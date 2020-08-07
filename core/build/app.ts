@@ -8,12 +8,12 @@ import { registerClientModules } from '../../src/modules/client'
 import { injectReferences } from '../lib/modules'
 import VueMeta from 'vue-meta'
 import {once} from '../helpers'
-const LocalConfig = require('./config.json')
+const LocalConfig = require('../config.json')
 
 const createApp = (config: string) => {
   const store = createStore
   const router = createRouter()
-  sync(store, router)
+  // sync(store, router)
   // TODO find a way to pass local.json to config store
   store.state.config = config
   once('__VUE_EXTEND__', () => {

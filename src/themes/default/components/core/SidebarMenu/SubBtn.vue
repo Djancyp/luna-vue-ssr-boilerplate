@@ -46,13 +46,16 @@ export default {
   },
   methods: {
     next () {
-      console.log('test')
+      this.$store.commit('ui/setSubmenu', {
+        id: this.id,
+        depth: ++this.submenu.depth
+      })
+      console.log(this.$store.state.ui)
     },
     back () {
-      console.log('test')
-      // this.$store.commit('ui/setSubmenu', {
-      //   depth: --this.submenu.depth
-      // })
+      this.$store.commit('ui/setSubmenu', {
+        depth: --this.submenu.depth
+      })
     }
   }
 }
